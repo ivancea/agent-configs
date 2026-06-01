@@ -1,0 +1,5 @@
+name: agent-configs
+version: 0.1.0
+description: Agent rules and skills.
+type: hybrid
+includes: auto
