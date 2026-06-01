@@ -1,0 +1,5 @@
+name: agent-tts
+version: 0.1.0
+description: Optional text-to-speech feedback for agent progress updates.
+type: hybrid
+includes: auto

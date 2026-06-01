@@ -1,5 +1,8 @@
 name: agent-configs
 version: 0.1.0
 description: Agent rules and skills.
-type: hybrid
-includes: auto
+dependencies:
+  apm:
+    - git: ivancea/agent-configs
+      path: agent-tts
+      ref: main
