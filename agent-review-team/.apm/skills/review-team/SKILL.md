@@ -7,6 +7,14 @@ description: Review by coordinating specialized agents, consolidating findings, 
 
 Use this skill to run a multi-agent review workflow with specialized reviewer roles.
 
+## Workflow
+
+1. Determine the review target scope (current diff by default, or explicit prompt target).
+2. Start all sub-agents in parallel using that same scope.
+3. Wait for all sub-agent outputs before any consolidation.
+4. Consolidate findings: merge only true duplicates and validate each issue.
+5. Return the final report with confirmed issues and ignored issues.
+
 ## Review scope
 
 - By default, review the changed code in the current diff.
