@@ -1,27 +1,32 @@
 ---
 name: review-team
-description: Coordinate specialized review agents, consolidate findings, and return a validated final review report.
+description: Review by coordinating specialized agents, consolidating findings, and returning a validated final report.
 ---
 
 # Review Team
 
 Use this skill to run a multi-agent review workflow with specialized reviewer roles.
 
-## Objectives
+## Review scope
 
-- Run all configured sub-agents against the same change set.
-- Collect every reported issue with `file`, `line`, short explanation, and context.
-- Merge findings only when they are clearly the same issue.
-- Validate findings before returning results to the user.
-- Include a dedicated "Ignored Issues" section for rejected findings.
+- By default, review the changed code in the current diff.
+- If the prompt explicitly defines a different target, use that target instead.
+- Pass the exact same target scope to every sub-agent.
 
-## Sub-agent order
+## Sub-agents (run in parallel)
 
-1. `investigator`
-2. `standardizer`
-3. `architect`
-4. `reviewer`
-5. `adversarial`
+- `investigator`: only investigate how the targeted changes are usually tackled externally, including internet research.
+- `standardizer`: only check whether the targeted changes match existing repository patterns, conventions, and similar implementations.
+- `architect`: only assess architecture-level concerns in the targeted changes (maintainability, extensibility, structural risks).
+- `reviewer`: only perform a baseline general review on the targeted changes.
+- `adversarial`: only perform a strict adversarial pass on the targeted changes, including edge cases and nitpicks.
+
+For each sub-agent invocation, require output entries with:
+
+- `file`
+- `line`
+- short explanation
+- required context
 
 ## Consolidation rules
 
@@ -29,13 +34,13 @@ Use this skill to run a multi-agent review workflow with specialized reviewer ro
 - Merge issues only when location and root problem are equivalent.
 - If two findings are similar but not identical, keep both.
 - For each ignored finding, explain why it was rejected.
+- When duplicates are merged, keep the merged context inside the confirmed issue entry.
 
 ## Final output
 
-Return three sections:
+Return two sections:
 
 1. `Confirmed Issues`
-2. `Merged Duplicates`
-3. `Ignored Issues`
+2. `Ignored Issues`
 
 Each issue entry must include: `file`, `line`, short explanation, and the minimum context needed to understand or reproduce the concern.

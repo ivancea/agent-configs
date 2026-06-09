@@ -1,6 +1,6 @@
 # agent-review-team
 
-A draft multi-agent review module that runs specialized reviewer agents and consolidates their findings into one final report.
+A multi-agent review module that runs specialized reviewer agents and consolidates their findings into one final report.
 
 ## Workflow
 
@@ -8,8 +8,8 @@ The `/review-team` skill runs a small team of reviewer agents, collects every is
 
 ## Included agents
 
-- `investigator`
-- `standardizer`
-- `architect`
-- `reviewer`
-- `adversarial`
+- `investigator`: checks relevant changes and researches common external approaches on the internet.
+- `standardizer`: checks whether changes align with existing repository patterns and conventions.
+- `architect`: checks high-level architecture quality, maintainability, and extensibility risks.
+- `reviewer`: performs a baseline general review pass.
+- `adversarial`: performs a strict edge-case and nitpick-focused pass.
