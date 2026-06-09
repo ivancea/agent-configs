@@ -29,7 +29,7 @@ Use this skill to run a multi-agent review workflow with specialized reviewer ro
 - `reviewer`: only perform a baseline general review on the targeted changes.
 - `adversarial`: only perform a strict adversarial pass on the targeted changes, including edge cases and nitpicks.
 
-Each sub-agent must output its findings as markdown, with `file`, `line`, a short description that lets a reader understand and localize the issue, and the minimum context needed to reproduce it.
+Each sub-agent must output its findings as markdown, with `file`, `line`, a short description that lets a reader understand and localize the issue, and the minimum context needed to reproduce it. Sub-agents do not emit the `Reporting Agents` field; the skill adds it during consolidation based on which sub-agents produced each finding.
 
 ## Consolidation rules
 
@@ -48,7 +48,7 @@ Return the report in markdown with these sections:
 
 1. `Confirmed Issues`
 2. `Ignored Issues`
-3. `Failed Agents` — only include this section if at least one sub-agent explicitly reported a failure or reported that no expected files were found. List the failing agents by name with a short reason.
+3. `Failed Agents` — only include this section if at least one sub-agent explicitly reported a failure or reported that it could not find any files within the provided scope. List the failing agents by name with a short reason.
 
 Each issue entry (in both `Confirmed Issues` and `Ignored Issues`) must include:
 
