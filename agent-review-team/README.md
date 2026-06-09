@@ -4,7 +4,7 @@ A multi-agent review module that runs specialized reviewer agents and consolidat
 
 ## Workflow
 
-The `/review-team` skill runs a small team of reviewer agents, collects every issue they report (`file + line + short explanation + context`), merges only true duplicates, validates which findings are valid, and returns a final report. Findings rejected during consolidation are listed in a dedicated "ignored issues" section.
+The `/review-team` skill runs a small team of reviewer agents on an explicit scope (required, no default), collects every issue they report (`file + line + short description + context + reporting agents`), deduplicates true duplicates, validates the consolidated findings, and returns a final markdown report. Findings rejected during validation are listed in a dedicated `Ignored Issues` section. If any sub-agent reports a failure or no expected files were found, a `Failed Agents` section is appended at the end.
 
 ## Included agents
 
