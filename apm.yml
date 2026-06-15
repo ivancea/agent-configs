@@ -3,9 +3,5 @@ version: 0.1.0
 description: Agent rules and skills.
 dependencies:
   apm:
-    - git: ivancea/agent-configs
-      path: agent-review-team
-      ref: main
-    - git: ivancea/agent-configs
-      path: agent-tts
-      ref: main
+    - path: ./agent-review-team
+    - path: ./agent-tts

@@ -1,11 +1,17 @@
 ---
 name: review-team
-description: Review by coordinating specialized agents, consolidating findings, and returning a validated final report.
+description: Explicit-only. Do not auto-select; run only when the user directly invokes `/review-team` or explicitly names the `review-team` skill.
 ---
 
 # Review Team
 
-Use this skill to run a multi-agent review workflow with specialized reviewer roles.
+Use this skill only when the user explicitly invokes `/review-team` or directly names the `review-team` skill. Do not select this skill from a generic review, bug-finding, or code-quality request.
+
+## Invocation policy
+
+- This skill is direct-invocation only. If the user did not explicitly ask for `/review-team` or `review-team`, do not use it.
+- The bundled agents are private to this workflow. Invoke them only from this skill while executing an explicit `review-team` request.
+- Do not expose or suggest the bundled agents as standalone agent choices.
 
 ## Workflow
 
