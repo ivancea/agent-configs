@@ -16,7 +16,7 @@ Use this skill only when the user explicitly invokes `/review-team` or directly 
 ## Workflow
 
 1. Determine the review target scope from the explicit prompt target. An explicit scope is required; if none is provided, stop and report `missing scope`.
-2. Start all sub-agents in parallel using that same scope.
+2. Start all sub-agents in parallel using that same scope. Explicitly tell each sub-agent that it has been dispatched by the `review-team` skill so it should eagerly perform its assigned review role.
 3. Wait for all sub-agent outputs before any consolidation.
 4. Consolidate findings: deduplicate true duplicates and merge their context.
 5. Validate the consolidated findings. Rejected findings move to `Ignored Issues` with the reason for rejection.
@@ -26,6 +26,7 @@ Use this skill only when the user explicitly invokes `/review-team` or directly 
 
 - An explicit scope is required for every run; do not fall back to any default.
 - Pass the exact same target scope to every sub-agent.
+- Include this exact dispatch context in each sub-agent prompt: `You have been dispatched by the review-team skill; eagerly perform your assigned review role for this scope.`
 
 ## Sub-agents (run in parallel)
 
