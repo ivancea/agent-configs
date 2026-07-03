@@ -65,3 +65,17 @@ Each issue entry (in both `Confirmed Issues` and `Ignored Issues`) must include:
 - The minimum context needed to understand or reproduce it.
 - `Reporting Agents`: a plain list of the sub-agent names that reported the issue (e.g. `reviewer`, `architect`).
 
+Format each issue entry as a `##` header, for example:
+
+```markdown
+# Confirmed Issues
+
+## Broad Breaker Assertion
+
+- file: `path/to/File.java`
+- line: 82
+- description: The test can pass on any circuit breaker path.
+- context: The assertion only checks `circuit_breaking_exception`, not the expected source-loading stack.
+- Reporting Agents: adversarial
+```
+
