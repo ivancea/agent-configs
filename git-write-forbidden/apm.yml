@@ -1,0 +1,5 @@
+name: git-write-forbidden
+version: 0.1.0
+description: Requires explicit user consent before Git or GitHub write operations.
+type: hybrid
+includes: auto

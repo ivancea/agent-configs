@@ -5,3 +5,4 @@ dependencies:
   apm:
     - path: ./agent-review-team
     - path: ./agent-tts
+    - path: ./git-write-forbidden
