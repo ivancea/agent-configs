@@ -1,0 +1,5 @@
+name: code-comments
+version: 0.1.0
+description: Code comments describe the current code on its own.
+type: hybrid
+includes: auto
