@@ -6,4 +6,4 @@ dependencies:
     - path: ./agent-review-team
     - path: ./agent-tts
     - path: ./code-comments
-  - path: ./git-write-forbidden
+    - path: ./git-write-forbidden
